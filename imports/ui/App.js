@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 
 import Grid from './Grid.js';
 
@@ -7,30 +6,32 @@ export default class App extends Component {
   
     constructor(props) {
         super(props);
-        const arr = Array(40).fill(0);
+        const width = 7;
+        const height = 10;
+        const numSquares = width*height;
+        // const arr = Array(width).fill(Array(height));
+        const arr = [[0,0],[0,0],[0,0],[0,0]];
+        const tetrominoes = {
+            I : [-1,0,1,2],
+            O : [-1,0,4,]
+        }
         
         this.state = {
             squares: arr,
-            active-squares: Array(4).fill(null),
-            active-type: 1 
+            activeSquares: Array(4).fill(null),
+            activeType: 1
         };
     }
   
-    const I = [-1,0,1,2];
+    //const I = [-1,0,1,2];
     
     addTetromino() {
         this.setState({
-            active-squares: this.setState.active-squares.map((val, i) => {5+i}),
-            active-type: 1 
+            activeSquares: this.setState.activeSquares.map((val, i) => {5+i}),
+            activeType: 1 
         });
         
-        draw();
-    }
-    
-    draw() {
-        this.setState({
-            squares: this.setState.squares.map((val, i) => {5+i}),
-        });
+        //draw();
     }
     
     isMoveAllowed(arr) {
@@ -43,7 +44,7 @@ export default class App extends Component {
   
     render() {
         
-        addTetromino();
+        //addTetromino();
         
         return (
             <div className="container">
@@ -54,4 +55,5 @@ export default class App extends Component {
             </div>
         );
     }
+    
 }
